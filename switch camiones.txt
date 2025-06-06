@@ -1,0 +1,69 @@
+Switch>ena
+Switch#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#ena
+% Incomplete command.
+Switch(config)#hostname SwitchCamiones
+SwitchCamiones(config)#no ip domain
+SwitchCamiones(config)#no ip domainl
+SwitchCamiones(config)#no ip domain-l
+SwitchCamiones(config)#no ip domain-lookup 
+SwitchCamiones(config)#enable ?
+  password  Assign the privileged level password
+  secret    Assign the privileged level secret
+SwitchCamiones(config)#enable secret class
+SwitchCamiones(config)#s?
+sdm  service  snmp-server  spanning-tree  
+SwitchCamiones(config)#service ?
+  dhcp                 Enable DHCP server and relay agent
+  password-encryption  Encrypt system passwords
+  timestamps           Timestamp debug/log messages
+SwitchCamiones(config)#service pa
+SwitchCamiones(config)#service password-encryption 
+SwitchCamiones(config)#line con 0
+SwitchCamiones(config-line)#pass
+SwitchCamiones(config-line)#password cisco
+SwitchCamiones(config-line)#login
+SwitchCamiones(config-line)#login
+SwitchCamiones(config-line)#loggin
+SwitchCamiones(config-line)#logging sync
+SwitchCamiones(config-line)#exit
+SwitchCamiones(config)#line vty 0 15
+SwitchCamiones(config-line)#pass
+SwitchCamiones(config-line)#password cisco
+SwitchCamiones(config-line)#login
+SwitchCamiones(config-line)#logg
+SwitchCamiones(config-line)#logging sync
+SwitchCamiones(config-line)#exit
+SwitchCamiones(config)#do wr
+Building configuration...
+[OK]
+SwitchCamiones(config)#banner motd
+SwitchCamiones(config)#banner motd #Favor de no entrar sin persmiso al switch de camiones!#
+SwitchCamiones(config)#do wr
+Building configuration...
+[OK]
+SwitchCamiones(config)#vlan 
+SwitchCamiones#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SwitchCamiones(config)#vlan 10
+SwitchCamiones(config-vlan)#name Admin
+SwitchCamiones(config-vlan)#exit
+SwitchCamiones(config)#vlan 20
+SwitchCamiones(config-vlan)#name Choferes
+SwitchCamiones(config-vlan)#exit
+SwitchCamiones(config)#do wr
+Building configuration...
+[OK]
+SwitchCamiones(config)#int g0/1
+SwitchCamiones(config-if)#switch mode access
+SwitchCamiones(config-if)#switchport access vlan 10
+SwitchCamiones(config-if)#do wr
+Building configuration...
+[OK]
+SwitchCamiones(config-if)#int f0/1
+SwitchCamiones(config-if)#switch mode access
+SwitchCamiones(config-if)#switchport access vlan 20
+SwitchCamiones(config-if)#do wr
+Building configuration...
+[OK]
