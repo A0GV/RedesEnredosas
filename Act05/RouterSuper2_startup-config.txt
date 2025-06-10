@@ -1,0 +1,126 @@
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname RouterSuper
+!
+!
+!
+enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1
+!
+!
+ip dhcp excluded-address 192.168.20.1
+ip dhcp excluded-address 192.168.20.33
+ip dhcp excluded-address 192.168.20.65
+ip dhcp excluded-address 192.168.20.81
+ip dhcp excluded-address 192.168.20.97
+!
+ip dhcp pool departamentos
+ network 192.168.20.0 255.255.255.224
+ default-router 192.168.20.1
+ dns-server 8.8.8.8
+ip dhcp pool cajas
+ network 192.168.20.32 255.255.255.224
+ default-router 192.168.20.33
+ dns-server 8.8.8.8
+ip dhcp pool almacen
+ network 192.168.20.64 255.255.255.240
+ default-router 192.168.20.65
+ dns-server 8.8.8.8
+ip dhcp pool oficinas
+ network 192.168.20.80 255.255.255.240
+ default-router 192.168.20.81
+ dns-server 8.8.8.8
+ip dhcp pool camaras
+ network 192.168.20.96 255.255.255.240
+ default-router 192.168.20.97
+ dns-server 8.8.8.8
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ ip address 192.168.0.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.30
+ encapsulation dot1Q 30
+ ip address 192.168.20.1 255.255.255.224
+!
+interface GigabitEthernet0/0/1.32
+ encapsulation dot1Q 32
+ ip address 192.168.20.33 255.255.255.224
+!
+interface GigabitEthernet0/0/1.34
+ encapsulation dot1Q 34
+ ip address 192.168.20.65 255.255.255.240
+!
+interface GigabitEthernet0/0/1.36
+ encapsulation dot1Q 36
+ ip address 192.168.20.81 255.255.255.240
+!
+interface GigabitEthernet0/0/1.38
+ encapsulation dot1Q 38
+ ip address 192.168.20.97 255.255.255.240
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 192.168.40.0 255.255.255.0 192.168.0.2 
+!
+ip flow-export version 9
+!
+!
+!
+banner motd #Favor de no entrar al router del switch sin autorizacion#
+!
+!
+!
+!
+line con 0
+ password 7 0822455D0A16
+ logging synchronous
+ login
+!
+line aux 0
+!
+line vty 0 4
+ password 7 0822455D0A16
+ logging synchronous
+ login
+!
+!
+!
+end
+
